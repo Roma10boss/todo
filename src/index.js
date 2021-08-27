@@ -2,17 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./index.css";
+import ProtectedRoute from "./ProtectedRoute";
 import App from "./App";
 import Login from "./components/Login";
+import Register from "./components/Register";
 import reportWebVitals from "./reportWebVitals";
-import store from "./redux/store";
+import store from "./store";
 import { Provider } from "react-redux";
+import PublicRoute from "./PublicRoute";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <Route exact path="/" component={App} />
+        <ProtectedRoute exact path="/" component={App} />
+        <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
       </BrowserRouter>
     </Provider>
